@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "auth.v1;authv1";
+
+service Auth {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+}
+
+message RegisterRequest {
+  string email = 1; // user email for register
+  string password = 2; // user password for register
+}
+
+message RegisterResponse {
+  string user_uuid = 1; // user uuid of registered user
+}
+
+message LoginRequest {
+  string email = 1; // user email for login
+  string password = 2; // user password for login
+  int32 app_id = 3; // if of the app to login to
+}
+
+message LoginResponse {
+  string token = 1; // auth token of the logged in user
+}
+
+message IsAdminRequest {
+  string user_uuid = 1; // user uuid for check
+}
+
+message IsAdminResponse {
+  bool is_admin = 1; // indicates user is admin
+}
