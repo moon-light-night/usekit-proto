@@ -1,4 +1,4 @@
-module usekit-proto
+module github.com/moon-light-night/usekit-proto
 
 go 1.23.1
 
